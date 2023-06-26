@@ -4,6 +4,8 @@ using namespace std;
 /// @param arr arr containing height of bars
 /// @param n size of array
 /// @return total water logged after computation
+/// Time complexity : Theta n
+/// Space Complexity : Theta n auxillary space
 int maxWaterTrapped(int arr[], int n)
 {
     int res = 0;
