@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 /// @brief find leaders in an array, means all the elements to the right of the current leader elements should be smaller
-/// LOGIC : print leaders from right to left. set last elem as leader, loop until zero keep prining if current element is greater than the curreent leader
+/// LOGIC : print leaders from right to left. set last elem as leader, loop until zero keep prining if current element is greater than the current leader
 /// @param arr array
 /// @param n size of an array
 void leadersInArray(int arr[], int n)
