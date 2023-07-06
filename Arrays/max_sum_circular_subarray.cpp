@@ -20,7 +20,6 @@ int kadanesAlgo(int arr[], int n)
         if (maxSum < 0)
             sum = 0;
     }
-
     return maxSum;
 }
 int main()
