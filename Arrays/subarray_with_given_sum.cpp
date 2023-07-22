@@ -12,6 +12,7 @@ bool findSubArrayWithGivenSum(int arr[], int n, int sum)
     for (int e = 0; e < n; e++) //keep incresing window size and icrement the value of sum
     {
         curr += arr[e];
+        //if current becomes greater than the sum to find out, keep reducing window size jab tak ki, curr sum chota na ho jaye sum se, agar equal hai toh return true
         while (curr > sum) // keep removing the elements from beginning unless the value of sum becomes lower than the current sum
         {
             curr -= arr[s]; // remove the added values from start by subtracting those values

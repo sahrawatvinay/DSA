@@ -36,8 +36,8 @@ int main()
     int arrTotalSum = 0;
     for (int i = 0; i < 9; i++)
     {
-        arr[i] = -arr[i];
         arrTotalSum += arr[i];
+        arr[i] = -arr[i];
     }
     int maxCircular = arrTotalSum + kadanesAlgo(arr, size);
     cout << "max circular sum is : " << max(maxNormal, maxCircular);
