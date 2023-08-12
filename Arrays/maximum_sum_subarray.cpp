@@ -1,7 +1,8 @@
 #include <iostream>
 using namespace std;
 /// @brief find max sum subarray, subarray is a part of main array continuous locations
-/// LOGIC: Kadanes algo : 3 steps
+/// LOGIC: Kadanes algo : 3 steps, set sum = 0, maxSum = 1st occurance of array
+/// run a loop form 1 to n
 /// step 1: sum = sum + arr[i], keep calculating sum of subarrays
 /// step 2: update maxSum, check if current sum is greater than the maxSum if yes, update it
 /// step 3: if current sum of sub array becomes negative, ignore previous part of subarray by setting sum = 0
