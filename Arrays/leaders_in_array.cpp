@@ -27,7 +27,7 @@ void printArray(int arr[], int size)
 }
 int main()
 {
-    int arr[9] = {10, 20, 30, 40, 50, 60, 70, 80, 90};
+    int arr[9] = {5, 8, 11, 34, 6, 7, 8, 13, 19};
     printArray(arr, 9);
     leadersInArray(arr, 9);
     return 0;
