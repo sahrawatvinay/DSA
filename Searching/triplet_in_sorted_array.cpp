@@ -5,7 +5,7 @@ using namespace std;
 /// @param arr pointer to the array
 /// @param n size of the array
 /// @param k sum for which we need to find pairs 
-/// @param si start index after the element for which we need to find pairs, incremnt value by 1 for the fixed elmenet index
+/// @param si start index after the element for which we need to find pairs, increment value by 1 for the fixed elmenet index
 /// @return if there is a pair available after the current element
 bool isPair(int arr[], int n, int k, int si)
 {
@@ -24,7 +24,7 @@ bool isPair(int arr[], int n, int k, int si)
 /// @brief find triplet by fixing ith element and find if a pair exists after that value and a pair is available
 /// @param arr pointer to the array
 /// @param n size of an element
-/// @param k sum for which er need to find value
+/// @param k sum for which we need to find value
 /// @return true false based on whether triplet is found or not
 bool isTriplet(int arr[], int n, int k)
 {
