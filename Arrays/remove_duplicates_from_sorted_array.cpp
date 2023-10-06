@@ -8,6 +8,11 @@ void printArray(int arr[], int size)
     }
     cout << endl;
 }
+/// @brief remove duplicates from sorted array : Logic, set counter = 1, start loop from 1st element, check if the current element is different from previous element,
+///         if yes, set current element's value to the counter index and move counter to ++. if next element encountered is same, do nothing 
+/// @param arr reference to array
+/// @param size size of array
+/// @return how many unique elements are there
 int removeDuplicatesFromSortedArray(int arr[], int size)
 {
     int res = 1;
