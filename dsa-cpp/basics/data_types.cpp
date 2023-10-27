@@ -53,5 +53,11 @@ int main()
     printArray(arr, 3);
     // void printArray(int *arr /*or arr[] can be used*/, int n)
 
+    string s = "Vinay"; //index starts from 0 to (size/length) - 1 
+    int strLen = s.length();
+    int strSize = s.size();
+    cout << "strlen: " << strLen << ", strsize: " << strSize << endl;
+    s[strLen - 1] = 'x'; //if we use "" it will give error as string is a collection of characters
+    cout << s;
     return 0;
 }
