@@ -1,1 +1,1 @@
-currentLeader
+leadersInArray
