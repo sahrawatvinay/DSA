@@ -9,7 +9,7 @@ int main()
     dq.emplace_back(3); // fast
     dq.emplace_front(4);
 
-    cout << "after pushing";
+    cout << "after pushing" << endl;
     for (auto e : dq)
         cout << e << " ";
 
@@ -17,10 +17,12 @@ int main()
     dq.pop_back();
     dq.pop_front();
 
-    cout << "after popping";
+    cout << "after popping" << endl;
     for (auto e : dq)
         cout << e << " ";
-    cout << dq.back() << " " << dq.front();
+
+    cout << endl;
+    cout << dq.back() << " " << dq.front(); ///back displays last element. front displays first element
 
     //rest fns are same as vector
     //begin, end, rbegin, rend, clear, insert, size, swap

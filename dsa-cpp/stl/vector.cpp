@@ -57,7 +57,7 @@ int main()
     vector.insert(vector.begin() + 2, 20);
 
     // insert multiple instances at a particular index
-    vector.insert(vector.begin() + 3, 2, 50);
+    vector.insert(vector.begin() + 3, 2, 50); //insert 2 values 50 each
 
     cout << "after insert " << endl;
     for (auto it : vector)
