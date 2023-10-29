@@ -65,6 +65,8 @@ int main()
 
     cout << endl;
 
+    cout << "size of vector : " << vector.size() << endl;
+
     vector.pop_back(); //removes last element
     vector.erase(vector.begin() + 4); //removes element at 4th index
     vector.erase(vector.begin() + 2, vector.begin() + 4); // to remove elements at idx 2 & 3, to is exclusive so provide ened addr next to that till where removed
@@ -72,6 +74,8 @@ int main()
     cout << "after deletion " << endl;
     for (auto it : vector)
         cout << it << " ";
-        
+
+    vector.clear(); //erases the entire vector
+    cout << vector.empty(); //returns true if empty, false otherwise
     return 0;
 }
