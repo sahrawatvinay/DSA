@@ -1,6 +1,10 @@
 /*
 - follows FIFO : First in First out
+- Elements are inserted at the back (end) and are deleted from the front.
 - all operations in O(1)
+- priority_queue : element with largest value stays at the top, if you keep pushing elements, 
+    they will be automatically placed as per their priority i.e. decreasing order. push top, pop
+- pq : push/pop : log(n), top : O(1)
 */
 #include <bits/stdc++.h>
 using namespace std;

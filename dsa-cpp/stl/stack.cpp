@@ -1,5 +1,6 @@
 /*
 - Follows LIFO : Last in First out
+- new element is added at one end (top) and an element is removed from that end only
 - no index based retreival of elemnets
 - only 3 fns : push, pop, top
 - all the operations are O(1)
