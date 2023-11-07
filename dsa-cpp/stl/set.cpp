@@ -1,8 +1,9 @@
-
 /*
 - stores everything in a sorted order : increasing
 - unique elements : no duplicates
 - not linear container, tree is maintained
+- log(n) complexity for every operation 
+- unordered_set : stores unique elements but does not follow sorting order it can be in any order, time complexity is one
 */
 #include <bits/stdc++.h>
 using namespace std;
