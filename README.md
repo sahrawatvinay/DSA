@@ -1,2 +1,2 @@
 # DSA
-# Concepts and coding questions related to DSA
+## Concepts and coding questions related to DSA
