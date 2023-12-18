@@ -1,7 +1,7 @@
 /*
 * vector : dynamic arrays
 * if vector capacity is full and we try to insert new element then,
-    new vector of double size is created and all the elements of previous vector ore copied
+    new vector of double size is created and all the elements of previous vector are copied
     to this newly created vector and old one is dropped.
 * random access is possible
 * Characteristic	            Array	                Vector
@@ -12,6 +12,7 @@
     Size and Flexibility	    Fixed size, determined  Dynamic size, can grow or shrink
                                 at compile time
     Memory Management	        Manual	                Automatic (Managed by STL)
+* vectors and arrays both have contiguous memory locations to store data
 */
 
 #include <iostream>
@@ -66,6 +67,10 @@ int main()
     cout << "2nd element -> " << v.at(1) << endl; // index starts with 0
     cout << "3rd element -> " << v[2] << endl;
 
+    cout << "Check front and back of elements ->" << endl;
+    cout << v.front() << endl;
+    cout << v.back() << endl;
+
     v.pop_back();
     cout << "after using pop back ->";
     printVectorElements(v);
@@ -87,8 +92,8 @@ int main()
 
     v.clear(); // all the elements deleted, size : 0
     cout << "after clearing the vector -> " << endl;
-    cout << v.size() << endl;
-    cout << v.capacity() << endl;
+    cout << "Size -> " << v.size() << endl;
+    cout << "Capacity -> " << v.capacity() << endl;
 
     vector<int> x(5, 69);
     vector<int> copyOfX(x); // copy of vector x
