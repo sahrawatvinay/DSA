@@ -44,10 +44,17 @@ int main()
 
     // removal of elements
     d.erase(d.begin()); // removes only index at 0
-    cout << "After removeing element at index 0 -> " << endl;
+    cout << "After removing element at index 0 -> " << endl;
     printDeque(d);
     d.erase(d.begin() + 1, d.begin() + 3); // removes elements from index 1 to 2, 3 is excluded
     printDeque(d);
+
+    //popping some elements
+    d.pop_back();
+    d.pop_front();
+    cout << "after popping back and front -> " << endl;
+    printDeque(d);
+
     cout << "dq size -> " << d.size() << endl;
     cout << "dq capacity -> " << d.max_size() << endl;
     return 0;
