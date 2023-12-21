@@ -79,6 +79,7 @@ int main()
 
     // position : argument
     v.erase(v.begin() + 1); // remove element at index 1, iterator instance pointing to position
+    // v.erase(v.begin() + 2, v.begin() + 4); // remove from index 2 to 4
     printVectorUsingIterator(v);
 
     // position, value : argument(s)

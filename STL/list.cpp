@@ -25,7 +25,7 @@ int main()
     l.push_front(3);
     l.push_front(4);
 
-    // can only insert at back or front as random access in not possible
+    // can only insert at back or front as random access in not possible, and can not insert element at particular index
     l.insert(l.begin(), 8);
     l.insert(l.end(), 9);
     printList(l);
