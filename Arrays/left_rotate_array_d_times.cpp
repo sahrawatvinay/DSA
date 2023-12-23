@@ -24,18 +24,19 @@ void reverseArrayElements(int arr[], int low, int high)
 //using reversal algorithm
 void leftRotateArrayDTimes(int arr[], int n, int d)
 {
+    d = d % n; //to make sure d is in range
+    reverseArrayElements(arr, 0, n-1); // reverse whole array
     reverseArrayElements(arr, 0, d-1); // reverse 1st d elements
     reverseArrayElements(arr, d, n-1); // reverse remaining elements
-    reverseArrayElements(arr, 0, n-1); // reverse whole array
 }
 int main()
 {
-    int arr[9] = {5, 4, 6, 8, 11, 34, 1, 2, 3};
-    printArray(arr, 9);
+    int arr[3] = {1, 2, 3};
+    printArray(arr, 3);
     int d;
     cout << "Enter no. of times you need to rotate";
     cin >> d;
-    leftRotateArrayDTimes(arr, 9, d);
-    printArray(arr, 9);
+    leftRotateArrayDTimes(arr, 3, d);
+    printArray(arr, 3);
     return 0;
 }
