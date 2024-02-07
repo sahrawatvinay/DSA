@@ -47,7 +47,7 @@ int main()
     cout << "5 is present or not" << s.count(5) << endl;
 
     //get reference of the element to be found
-    set<int>::iterator itr = s.find(2);
+    set<int>::iterator itr = s.find(2); // If x is found, it returns an iterator pointing to the location where x is found; otherwise, it returns s.end().
 
     s.erase(it);
     return 0;
