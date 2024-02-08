@@ -6,10 +6,7 @@ void unionAxB(vector<int> &a, vector<int> &b)
 {
     unordered_set<int> s(a.begin(), a.end());
     for (auto x : b)
-    {
-        if (s.find(x) == s.end())
-            s.insert(x);
-    }
+        s.insert(x); // duplicate elements will automatically be removed
     for (auto x : s)
         cout << x << " ";
 }
