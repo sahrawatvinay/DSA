@@ -3,7 +3,7 @@
 #include <unordered_set>
 using namespace std;
 /// @brief find the elements that are common in a and b
-/// we pick the elements from b's set because we need to maintaint the order as per a's elements
+/// we pick the elements from b's set because we need to maintain the order as per a's elements
 /// Time : O(n+m)
 /// Space : O(n)
 /// @param a vector a

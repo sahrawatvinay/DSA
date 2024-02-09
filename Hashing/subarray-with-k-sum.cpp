@@ -11,7 +11,8 @@ bool checkIfSubArrayWithKSumExists(vector<int> &v, int &sum)
         prefixSum += x;
         if (prefixSum == sum)
             return true;
-        if (s.find(prefixSum - sum) != s.end()) // we found such a subarray whose sum is zero as it is resulting in a value that was computed earlier and saved in hashset
+        if (s.find(prefixSum - sum) != s.end()) // we found such a subarray whose sum is k as it is resulting in a value 
+                                                // that was computed earlier and saved in hashset
             return true;
         s.insert(prefixSum);
     }

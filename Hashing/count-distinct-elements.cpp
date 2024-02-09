@@ -10,14 +10,16 @@ using namespace std;
 void countDistinctElements(vector<int> &v)
 {
     unordered_set<int> s(v.begin(), v.end()); // pass iterator, begin and end. In case of arrays (arr, arr + n)
-    for(auto x : s){
+    for (auto x : s)
+    {
         cout << x << " ";
     }
-    cout << endl << s.size();
+    cout << endl
+         << s.size();
 }
 int main()
 {
-    vector<int> v{3, 3, 1, 2, 4, 5, 6, 7, 7, 7};
+    vector<int> v{3, 3, 1, 8, 8, 10, 1, 16, 2, 4, 5, 6, 7, 7, 7};
     countDistinctElements(v);
     return 0;
 }
