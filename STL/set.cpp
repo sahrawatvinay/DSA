@@ -2,7 +2,7 @@
 - all the elements are unique
 - behind the scenes implementation is done by BST
 - we can not modify any element, updation of elements not possible
-- all the sorted in ascending order
+- all the elements are sorted in ascending order
 - unordered set is faster than set
 - elements are fetched in random order not in sorted order
 - does not provide direct access to elements by index because 
