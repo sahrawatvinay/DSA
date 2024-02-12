@@ -25,6 +25,9 @@ int main()
     m.insert({3, "Vinay"});
     m.insert({5, "Sahrawat"});
     m.insert({10, "Code"});
+    cout << "checking direct access : " << endl;
+    cout << m[3] << " -- " << m[10] << " -- " << m[2] << " -- " << m[1] << " ~~ " << m[68]; //not present;
+
     printMap(m);
     cout << "Finding 5 -> " << m.count(5) << endl;
     m.erase(5); // only provide key value, the entry will be deleted
