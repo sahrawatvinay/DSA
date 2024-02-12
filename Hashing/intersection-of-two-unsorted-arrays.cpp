@@ -12,10 +12,8 @@ void intersectionAxB(vector<int> &a, vector<int> &b)
 {
     unordered_set<int> s(b.begin(), b.end()); // create a set which will contain all unique elements of set b
     for (auto x : a)                          // now loop through the elements in a and print the elements that are in set created by b's elements i.e. common elements
-    {
-        if (s.find(x) != s.end()) // If x is found, it returns an iterator pointing to the location where x is found; otherwise, it returns s.end().
+        if (s.find(x) != s.end())             // If x is found, it returns an iterator pointing to the location where x is found; otherwise, it returns s.end().
             cout << x << endl;
-    }
 }
 int main()
 {
