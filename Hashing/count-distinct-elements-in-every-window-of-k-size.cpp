@@ -10,10 +10,10 @@ void countDistinctElementsInEveryWindow(vector<int> &v, int k)
     cout << m.size() << " ";           // after creating freq map, return size of distinct elements
     for (int i = k; i < v.size(); i++) // traversing to remaining windows
     {
-        m[v[i - k]]--;        // decrease the value in map of the last element of previous window, if available
+        m[v[i - k]]--;        // decrease the value in map of the first element of previous window, if available
         if (m[v[i - k]] == 0) // if it becomes 0, then remove it from hashmap
             m.erase(v[i - k]);
-        m[v[i]]++; // update the current value in map, print the size
+        m[v[i]]++; // update the current value in map, print the size, i.e. include current element in window size
         cout << m.size() << " ";
     }
 }
