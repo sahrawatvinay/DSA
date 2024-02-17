@@ -13,7 +13,7 @@ int findMaxSumSubarray(int arr[], int n)
 {
     int sum = 0;
     int maxSum = arr[0];
-    for (int i = 1; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         sum = sum + arr[i];
         maxSum = max(sum, maxSum);
