@@ -1,24 +1,33 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-void generateAllPossibleSubarrays(int arr[], int size)
+void generateAllPossibleSubArrays(int arr[], int size)
 {
-    vector<vector<int>> subArrays;
-    for (int i = 0; i < size; i++)
+    vector<vector<int>> possibleSubArrays;
+    for (int i = 0; i < size; i++) // starting index
     {
-        for (int j = i; j < size; j++)
+        for (int j = i; j < size; j++) // ending indexes
         {
-            // Print subarray between current starting
-            // and ending points
-            for (int k = i; k <= j; k++){
-                
+            for (int k = i; k <= j; k++) // loops from start to end indexes and create sub arrays
+            {
+                vector<int> v;
+                v.push_back(arr[k]);
+                possibleSubArrays.push_back(v);
             }
         }
+    }
+    for (auto x : possibleSubArrays)
+    {
+        for (auto i : x)
+        {
+            cout << i << " ";
+        }
+        cout << endl;
     }
 }
 int main()
 {
-    int arr[5] = {5, 4, 6, 8, 11};
-    generateAllPossibleSubarrays(arr, 5);
+    int arr[9] = {5, 4, 6, 8, 11};
+    generateAllPossibleSubArrays(arr, 5);
     return 0;
 }
