@@ -2,7 +2,7 @@
 - all the elements are unique
 - behind the scenes implementation is done by BST
 - we can not modify any element, updation of elements not possible
-- all the sorted in ascending order
+- all the elements are sorted in ascending order
 - unordered set is faster than set
 - elements are fetched in random order not in sorted order
 - does not provide direct access to elements by index because 
@@ -47,7 +47,7 @@ int main()
     cout << "5 is present or not" << s.count(5) << endl;
 
     //get reference of the element to be found
-    set<int>::iterator itr = s.find(2);
+    set<int>::iterator itr = s.find(2); // If x is found, it returns an iterator pointing to the location where x is found; otherwise, it returns s.end().
 
     s.erase(it);
     return 0;
