@@ -10,7 +10,7 @@ bool checkIfSubSequence(string s1, string s2)
     if (s2.size() > s1.size()) //s2 should always be smaller than s1
         return false;
     int j = 0;                                           // start a counter, points to 1st character in s2
-    for (int i = 0; i < s1.size() && j < s2.size(); i++) // iterate over original string
+    for (int i = 0; i < s1.size() && j < s2.size(); i++) // iterate over original string and make sure no pointer exceeds size
         if (s1[i] == s2[j])                              // if character matches to current character in original
             j++;                                         // incremenet j pointer, i is already incrementing
     return (j == s2.size());

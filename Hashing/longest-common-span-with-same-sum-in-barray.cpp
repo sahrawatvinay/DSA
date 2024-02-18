@@ -2,7 +2,7 @@
 #include <vector>
 #include <unordered_map>
 using namespace std;
-/// @brief
+/// @brief Start and end index in both arrays should be same, sub array 1 should have sum same as in sub array 2
 /// Logic :
 /// 1. create a temp array which will store either v1[] - v2[] or v2[] - v1[]
 /// 2. we get 0 when values are same in length
@@ -35,8 +35,8 @@ void longestCommonSpanWithSameSum(vector<int> &v1, vector<int> &v2)
 }
 int main()
 {
-    vector<int> v1{0, 1, 0, 1, 1, 1, 1};
-    vector<int> v2{1, 1, 1, 1, 1, 0, 1};
+    vector<int> v1{0, 1, 0, 1, 1, 1, 1}; //idx 1 to last
+    vector<int> v2{1, 1, 1, 1, 1, 0, 1}; //idx 1 to last
     longestCommonSpanWithSameSum(v1, v2);
     return 0;
 }
