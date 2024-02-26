@@ -24,8 +24,8 @@ int findMaxSumSubarray(int arr[], int n)
 }
 int main()
 {
-    int arr[9] = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
-    int result = findMaxSumSubarray(arr, 9);
+    int arr[5] = {3, 1, 3, 2, 6};
+    int result = findMaxSumSubarray(arr, 5);
     cout << "max sub array sum is : " << result;
     return 0;
 }

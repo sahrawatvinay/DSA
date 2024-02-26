@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 using namespace std;
 /// @brief circular sum of sub array
 /// Step 1 : Find max normal sum of array using kadanes algo
@@ -11,6 +12,15 @@ using namespace std;
 /// @return result after computation
 int kadanesAlgo(int arr[], int n)
 {
+    //to handle cases when all elements are negative
+    int maxElement = INT_MIN;
+    for (int i = 0; i < n; i++)
+        maxElement = max(maxElement, arr[i]);
+
+    // If all elements are negative, return the maximum element
+    if (maxElement < 0)
+        return maxElement;
+
     int sum = 0;
     int maxSum = arr[0];
     for (int i = 1; i < n; i++)
