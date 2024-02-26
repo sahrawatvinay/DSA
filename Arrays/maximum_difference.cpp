@@ -16,7 +16,7 @@ void printArray(int arr[], int size)
 int findMaximumDifference(int arr[], int n)
 {
     int res = arr[1] - arr[0], minVal = arr[0];
-    for (int j = 0; j < n; j++)
+    for (int j = 1; j < n; j++)
     {
         res = max(res, arr[j] - minVal);
         minVal = min(arr[j], minVal);
