@@ -2,6 +2,8 @@
 #include <vector>
 #include <unordered_map>
 using namespace std;
+// set all the zero's to -1 in the vector
+// the problem breaks down to max Sum subarray with sum 0
 void longestSubArrayWithEqualZeroesAndOnes(vector<int> &v)
 {
     for (int i = 0; i < v.size(); i++)
