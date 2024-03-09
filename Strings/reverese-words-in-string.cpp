@@ -21,12 +21,12 @@ int main()
     {
         if (str[e] == ' ') // when space encountered, send word to reverse, if multiple case use while loop
         {
-            reverse(str, s, e - 1); // reverese individual word before space is encountered
+            reverse(str, s, e - 1); // reverse individual word before space is encountered
             s = e + 1;              // update start idx
         }
     }
     reverse(str, s, str.size() - 1); // explicitly reverse last word as it won't get encountered in prev loop
-    reverse(str, 0, str.size() - 1); // Freverse whoile string
+    reverse(str, 0, str.size() - 1); // reverse whole string
     cout << "reverse : " << str;
     return 0;
 }
