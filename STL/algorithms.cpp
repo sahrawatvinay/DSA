@@ -21,7 +21,7 @@ int main()
 
     cout << "Finding 5 -> " << binary_search(v.begin(), v.end(), 5) << endl;
     cout << "Lower bound -> " << lower_bound(v.begin(), v.end(), 4) - v.begin() << endl;
-    cout << "Upper bound -> " << lower_bound(v.begin(), v.end(), 7) - v.begin() << endl;
+    cout << "Upper bound -> " << upper_bound(v.begin(), v.end(), 7) - v.begin() << endl;
 
     int a = 2;
     int b = 9;
