@@ -28,15 +28,15 @@ void longestCommonSpanWithSameSum(vector<int> &v1, vector<int> &v2)
             maxLen = i + 1;
         if (m.find(prefixSum) == m.end())
             m[prefixSum] = i;
-        if (m.find(prefixSum) != m.end())
+        else
             maxLen = max(maxLen, (i - m[prefixSum]));
     }
     cout << "max len : " << maxLen;
 }
 int main()
 {
-    vector<int> v1{0, 1, 0, 1, 1, 1, 1}; //idx 1 to last
-    vector<int> v2{1, 1, 1, 1, 1, 0, 1}; //idx 1 to last
+    vector<int> v1{0, 1, 0, 1, 1, 1, 1}; // idx 1 to last
+    vector<int> v2{1, 1, 1, 1, 1, 0, 1}; // idx 1 to last
     longestCommonSpanWithSameSum(v1, v2);
     return 0;
 }

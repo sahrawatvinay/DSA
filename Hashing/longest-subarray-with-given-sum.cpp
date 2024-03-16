@@ -15,7 +15,7 @@ bool longestSubArrayWithKSum(vector<int> &v, int &sum)
         // check if presum is already present in map or not, if already present, then we do not need to replace old values, beacuse it will result in larger index
         if (m.find(prefixSum) == m.end()) // if prefix sum is not found in unordered map, then insert the prefix sum along with the index other wise dont replace old value
             m.insert({prefixSum, i});
-        if (m.find(prefixSum - sum) != m.end()) // if prefixSum - sum is found, update the maxLength
+        else // if prefixSum - sum is found, update the maxLength
             res = max(res, i - m[prefixSum - sum]);
     }
     return res;

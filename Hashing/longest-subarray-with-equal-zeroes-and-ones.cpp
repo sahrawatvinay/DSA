@@ -21,7 +21,7 @@ void longestSubArrayWithEqualZeroesAndOnes(vector<int> &v)
             maxLen = i + 1;
         if (m.find(prefixSum) == m.end())
             m.insert({prefixSum, i});
-        if (m.find(prefixSum) != m.end())
+        else
             maxLen = max(maxLen, i - m[prefixSum]);
     }
     cout << maxLen << endl;
