@@ -1,4 +1,5 @@
 #include <iostream>
+#include <istream>
 using namespace std;
 /// @brief check if entered string is palindrome or not
 /// Logic : take 2 ptr l and r, keep checking leftmost rightmost and keep checking till you reach middle
