@@ -10,6 +10,7 @@ slower search                       faster search
 */
 #include <iostream>
 #include <map>
+#include <unordered_map>
 using namespace std;
 
 void printMap(map<int, string> map)
@@ -26,7 +27,7 @@ int main()
     m.insert({5, "Sahrawat"});
     m.insert({10, "Code"});
     cout << "checking direct access : " << endl;
-    cout << m[3] << " -- " << m[10] << " -- " << m[2] << " -- " << m[1] << " ~~ " << m[68]; //not present;
+    cout << m[3] << " -- " << m[10] << " -- " << m[2] << " -- " << m[1] << " ~~ " << m[68]; // not present;
 
     printMap(m);
     cout << "Finding 5 -> " << m.count(5) << endl;
@@ -37,5 +38,10 @@ int main()
     cout << (*it).first << " " << (*it).second << endl;
     for (auto i = it; i != m.end(); i++)
         cout << (*i).first << " " << (*i).second << endl;
+
+    unordered_map<int, int> mp;
+    mp[1] = 0;
+    mp[2] = 1;
+    cout << mp[0] << " -- " << mp[1] << " -- " << mp[2] << " -- " << endl;
     return 0;
 }
