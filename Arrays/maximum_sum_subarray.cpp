@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 using namespace std;
 /// @brief find max sum subarray, subarray is a part of main array continuous locations
 /// LOGIC: Kadanes algo : 3 steps, set sum = 0, maxSum = 1st occurance of array
@@ -12,7 +13,7 @@ using namespace std;
 int findMaxSumSubarray(int arr[], int n)
 {
     int sum = 0;
-    int maxSum = arr[0];
+    int maxSum = INT_MIN;
     for (int i = 0; i < n; i++)
     {
         sum = sum + arr[i];

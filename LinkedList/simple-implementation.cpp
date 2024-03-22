@@ -49,6 +49,48 @@ Node *insertAtEnd(Node *head, int x)
     curr->next = temp;
     return head;
 }
+Node *insertAtIndex(Node *head, int val, int pos)
+{
+    Node *temp = new Node(val);
+    if (pos == 1) // if we need to add node at 1st position
+    {
+        temp->next = head;
+        return temp;
+    }
+    Node *curr = head;
+    for (int i = 1; i < pos - 1 && curr != NULL; i++) // traverse to that index
+        curr = curr->next;                            // curr != NULL in for to check if head's next is not null as we need to traverse furthur
+    if (curr == NULL)                                 // position out of range
+        return head;
+    temp->next = curr->next; // 1st update temp's next, if we 1st update curr->next to temp then we loose track of continuing itemsF
+    curr->next = temp;
+    return head;
+}
+// head will always be updated when we delete
+Node *deleteHead(Node *head)
+{
+    if (head == NULL)
+        return NULL;
+    Node *temp = head->next; // create temp var that points to next elemnt of head
+    delete head;             // delete previous head
+    return temp;             // return updated head
+}
+Node *deleteLastNode(Node *head)
+{
+    if (head == NULL)
+        return NULL;
+    if (head->next == NULL)
+    {
+        delete head;
+        return NULL;
+    }
+    Node *curr = head;
+    while (curr->next->next != NULL) // to make sure we have atleast 2 nodes, we have handeled 2 cases before, otherwise segmentation fault
+        curr = curr->next;
+    delete (curr->next); // deallocating last memory
+    curr->next = NULL;   // then making it null
+    return head;
+}
 int main()
 {
     Node *head = new Node(10);
@@ -60,6 +102,9 @@ int main()
     cout << endl;
     head = insertAtBeginning(head, 5); // head will get updated here
     head = insertAtEnd(head, 9);
+    head = insertAtIndex(head, 25, 3);
+    head = deleteHead(head);
+    head = deleteLastNode(head);
     printLinkedList(head);
     return 0;
 }

@@ -12,7 +12,7 @@ using namespace std;
 /// @return result after computation
 int kadanesAlgo(int arr[], int n)
 {
-    //to handle cases when all elements are negative
+    // to handle cases when all elements are negative
     int maxElement = INT_MIN;
     for (int i = 0; i < n; i++)
         maxElement = max(maxElement, arr[i]);
@@ -22,12 +22,12 @@ int kadanesAlgo(int arr[], int n)
         return maxElement;
 
     int sum = 0;
-    int maxSum = arr[0];
-    for (int i = 1; i < n; i++)
+    int maxSum = INT_MIN;
+    for (int i = 0; i < n; i++)
     {
         sum += arr[i];
         maxSum = max(maxSum, sum);
-        if (maxSum < 0)
+        if (sum < 0)
             sum = 0;
     }
     return maxSum;
