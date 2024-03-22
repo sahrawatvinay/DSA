@@ -91,6 +91,22 @@ Node *deleteLastNode(Node *head)
     curr->next = NULL;   // then making it null
     return head;
 }
+int findInLinkedList(Node *head, int x)
+{
+    int pos = 1;
+    Node *curr = head;
+    while (curr != NULL)
+    {
+        if (curr->data == x)
+            return pos;
+        else
+        {
+            pos++;
+            curr = curr->next;
+        }
+    }
+    return -1;
+}
 int main()
 {
     Node *head = new Node(10);
@@ -106,5 +122,7 @@ int main()
     head = deleteHead(head);
     head = deleteLastNode(head);
     printLinkedList(head);
+    int posi = findInLinkedList(head, 20);
+    cout << "pos : " << posi << endl;
     return 0;
 }
