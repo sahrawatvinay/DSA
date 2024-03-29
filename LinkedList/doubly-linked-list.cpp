@@ -18,7 +18,7 @@ Node *insertInBeginning(Node *head, int data)
     temp->next = head;
     if (head != NULL)
         head->prev = temp;
-    return head;
+    return temp;
 }
 Node *insertAtEnd(Node *head, int data)
 {
@@ -41,6 +41,21 @@ void printList(Node *head)
         curr = curr->next;
     }
 }
+Node *reverseLinkedList(Node *head)
+{
+    if (head == NULL || head->next == NULL)
+        return head;
+    Node *temp = NULL; // create emp varialbe to store prev of node
+    Node *curr = head; // curr to traverse the LL
+    while (curr != NULL)
+    {
+        temp = curr->prev;       // store prev in curr variable
+        curr->prev = curr->next; // update prev to curr->next
+        curr->next = temp;       // curr-> next to temp var, which has prev
+        curr = curr->prev;       // since prev now hold's next posi we will move forward using this
+    }
+    return temp->prev;
+}
 int main()
 {
     Node *head = new Node(10);
@@ -52,6 +67,7 @@ int main()
     temp2->prev = temp1;
     head = insertInBeginning(head, 5);
     head = insertAtEnd(head, 15);
+    head = reverseLinkedList(head);
     printList(head);
     return 0;
 }
