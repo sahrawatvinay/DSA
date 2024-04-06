@@ -12,7 +12,7 @@ void printSnakePattern(vector<vector<int>> &v)
             for (int j = 0; j < rows; j++)
                 cout << v[i][j] << " ";
         }
-        else // if odd, print elements from right to leftF
+        else // if odd, print elements from right to left
         {
             for (int j = columns - 1; j >= 0; j--)
                 cout << v[i][j] << " ";
