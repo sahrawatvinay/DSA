@@ -54,7 +54,41 @@ Node *reverseLinkedList(Node *head)
         curr->next = temp;       // curr-> next to temp var, which has prev
         curr = curr->prev;       // since prev now hold's next posi we will move forward using this
     }
-    return temp->prev;
+    return temp->prev; // last node of the original list, which becomes the new head of the reversed list after the reversal process. This is achieved by returning temp->prev, as temp points to the last node after the loop ends, and temp->prev is now the head of the reversed list.
+}
+Node *deleteHead(Node *head)
+{
+    if (head == NULL)
+        return NULL;
+    if (head->next == NULL)
+        return NULL;
+    else
+    {
+        Node *temp = head;
+        head = head->next;
+        head->prev = NULL;
+        delete temp;
+        return head;
+    }
+}
+Node *deleteLastNode(Node *head)
+{
+    if (head == NULL)
+        return NULL;
+    if (head->next == NULL)
+    {
+        delete head;
+        return NULL;
+    }
+    else
+    {
+        Node *curr = head;
+        while (curr->next != NULL) // traverse to the last node
+            curr = curr->next;
+        curr->prev->next = NULL; // set second last nodes' to NULL as we need to delete the last node
+        delete curr;             // delete the current node, which is at the last
+        return head;             // return head as we have deleted last node using curr node which is pointing to last
+    }
 }
 int main()
 {
