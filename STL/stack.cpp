@@ -1,4 +1,6 @@
 /*
+- Linear Data Structure
+- Insert(push) and remove(pop) happens only from one end
 - Works on LIFO (Last In First Out) principle
 - push, pop, top (See the last pushed element), empty are main functions
 - A stack is a data structure you should use when you are interested in placing elements on top and getting elements from the top
