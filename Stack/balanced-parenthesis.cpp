@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stack>
 using namespace std;
-/// @brief checkes if popped item at top of stack is matching the current character that is to be checked
+/// @brief checks if popped item at top of stack is matching the current character that is to be checked
 /// @param a opening bracket [popped item]
 /// @param b closing bracket [current item]
 /// @return true/false if matching/not matching
