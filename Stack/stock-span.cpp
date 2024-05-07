@@ -5,9 +5,7 @@ using namespace std;
 void findStockSpan(vector<int> &v)
 {
     stack<int> st;
-    st.push(0); // store indexes of previous greater element in stack, initially there will be atleast 1 element and since we including so there will be 1, and idx 0 in stack
-    cout << "1 "; // because current element is also taken into account
-    for (int i = 1; i < v.size(); i++) // traversing through remaining elements
+    for (int i = 0; i < v.size(); i++) // traversing through remaining elements
     {
         while (!st.empty() && v[st.top()] <= v[i]) // keep removing the smaller elements which are in stack as they are of no use
             st.pop();
