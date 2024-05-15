@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 /// @brief structure of node of a tree
 /// BINARY TREE important points:
@@ -15,6 +16,7 @@ struct Node
         left = right = NULL;
     }
 };
+
 /// @brief printing the tree in inorder fashion
 /// Left Root Right
 /// Left, Right are subtrees
@@ -30,6 +32,7 @@ void inorder(Node *root) // L Root Right
         inorder(root->right);
     }
 }
+
 /// @brief prining nodes of tree in preorder fashion
 /// Root Left Right
 /// Left, Right are subtrees
@@ -45,6 +48,7 @@ void preorder(Node *root) // Root L Right
         preorder(root->right);
     }
 }
+
 /// @brief prining nodes of tree in postorder fashion
 /// L Right Root
 /// Left, Right are subtrees
@@ -60,6 +64,86 @@ void postorder(Node *root) // L Right Root
         cout << root->key << " ";
     }
 }
+
+/// @brief calculate height of binary tree
+/// recursively call for the height of left subtree and right subtree
+/// take max of both left and right sub trees, add 1 explicity and evaluate
+/// @param root root node of tree
+/// @return height of tree
+int height(Node *root)
+{
+    if (root == NULL)
+        return 0;
+    else
+        return (max(height(root->left), height(root->right)) + 1);
+}
+
+/// @brief print nodes that are at k level, root level = 0
+/// recursively call for the left subtree and right subtree
+/// @param root root node of a tree
+/// @param k level at which we want to print nodes
+void nodesAtKDistance(Node *root, int k)
+{
+    if (root == NULL)
+        return;
+    if (k == 0)
+        cout << root->key << " ";
+    else
+    {
+        nodesAtKDistance(root->left, k - 1);
+        nodesAtKDistance(root->right, k - 1);
+    }
+}
+
+/// @brief Level order traversal
+/// Queue ds is used
+/// enqueue a level into queue
+/// dequeue it and print on the screen
+/// while queing, push the children into the queue
+/// TC : O(n)
+/// SC : O(width)
+/// @param root root node of a tree
+void levelOrder(Node *root)
+{
+    if (root == NULL)
+        return;
+    queue<Node *> q;
+    q.push(root);
+    while (!q.empty())
+    {
+        Node *curr = q.front();
+        q.pop();
+        cout << curr->key << " ";
+        if (curr->left != NULL)
+            q.push(curr->left);
+        if (curr->right != NULL)
+            q.push(curr->right);
+    }
+}
+
+void levelOrderLineByLine(Node *root)
+{
+    if (root == NULL)
+        return;
+    queue<Node *> q;
+    q.push(root);
+    while (!q.empty())
+    {
+        int sz = q.size();
+        for (int i = 0; i < sz; i++)
+        {
+            Node *curr = q.front();
+            q.pop();
+            cout << curr->key << " ";
+            if (curr->left != NULL)
+                q.push(curr->left);
+            if (curr->right != NULL)
+                q.push(curr->right);
+        }
+        cout << endl;
+    }
+}
+
 int main()
 {
     Node *root = new Node(10);
@@ -75,5 +159,14 @@ int main()
     preorder(root);
     cout << endl;
     postorder(root);
+    cout << endl;
+    cout << "Height of tree : " << height(root) << endl;
+    cout << "Nodes at 3 distance : ";
+    nodesAtKDistance(root, 3);
+    cout << endl;
+    cout << "Level order traversal: ";
+    levelOrder(root);
+    cout << "Level order traversal line by line : ";
+    levelOrderLineByLine(root);
     return 0;
 }
