@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include <climits>
 using namespace std;
 /// @brief structure of node of a tree
 /// BINARY TREE important points:
@@ -129,7 +130,7 @@ void levelOrderLineByLine(Node *root)
     q.push(root);
     while (!q.empty())
     {
-        int sz = q.size();
+        int sz = q.size(); // used to extract all the children of current avaialble nodes present in queue
         for (int i = 0; i < sz; i++)
         {
             Node *curr = q.front();
@@ -142,6 +143,31 @@ void levelOrderLineByLine(Node *root)
         }
         cout << endl;
     }
+}
+
+/// @brief get size of a binary tree
+/// for iterative solution we can use queue
+/// @param root root of binary tree
+/// @return size by calculating number of nodes in a binary tree
+int getSizeRecursive(Node *root)
+{
+    if (root == NULL)
+        return 0;
+    else
+        return (1 + getSizeRecursive(root->left) + getSizeRecursive(root->right));
+}
+
+/// @brief get the max value among nodes in a binary tree
+/// we need to compare 3 values, root value, max value deduced from left and right subtree
+/// iterative sln using queue, keep curr value and compare it while popping out value from queue
+/// @param root root of a binary tree
+/// @return max node of tree
+int maxOfBinaryTree(Node *root)
+{
+    if (root == NULL)
+        return INT_MIN;
+    else
+        return (max(root->key, max(maxOfBinaryTree(root->left), maxOfBinaryTree(root->right))));
 }
 
 int main()
@@ -166,7 +192,11 @@ int main()
     cout << endl;
     cout << "Level order traversal: ";
     levelOrder(root);
-    cout << "Level order traversal line by line : ";
+    cout << endl;
+    cout << "Level order traversal line by line : " << endl;
     levelOrderLineByLine(root);
+    cout << "Size of a binary tree : " << getSizeRecursive(root) << endl;
+    int maxBT = maxOfBinaryTree(root);
+    cout << "Max of binary tree : " << maxBT;
     return 0;
 }
