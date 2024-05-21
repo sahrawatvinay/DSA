@@ -4,7 +4,7 @@
 using namespace std;
 /// @brief structure of node of a tree
 /// BINARY TREE important points:
-/// - each node can have atmpst 2 child, left child and right child
+/// - each node can have atmost 2 childs, left child and right child
 /// - empty tree is represented as NULL
 struct Node
 {
@@ -99,8 +99,9 @@ void nodesAtKDistance(Node *root, int k)
 /// @brief Level order traversal
 /// Queue ds is used
 /// enqueue a level into queue
-/// dequeue it and print on the screen
-/// while queing, push the children into the queue
+/// while queue is not empty,
+/// dequeue the node at front of queue and store it in a new Node* curr variable then print on the screen
+/// check for the left and right child of curr node, if available, push the children into the queue
 /// TC : O(n)
 /// SC : O(width)
 /// @param root root node of a tree
@@ -130,7 +131,7 @@ void levelOrderLineByLine(Node *root)
     q.push(root);
     while (!q.empty())
     {
-        int sz = q.size(); // used to extract all the children of current avaialble nodes present in queue
+        int sz = q.size(); // used to extract all the children of current available nodes present in queue
         for (int i = 0; i < sz; i++)
         {
             Node *curr = q.front();
@@ -170,6 +171,23 @@ int maxOfBinaryTree(Node *root)
         return (max(root->key, max(maxOfBinaryTree(root->left), maxOfBinaryTree(root->right))));
 }
 
+/// @brief check if sum of values of children is equal to the root
+/// @param root root node of tree
+/// @return boolean if it is children sum or not
+bool isCSum(Node *root)
+{
+    if (root == NULL)
+        return true;
+    if (root->left == NULL && root->right == NULL)
+        return true;
+    int sum = 0;
+    if (root->left != NULL)
+        sum += root->left->key;
+    if (root->right != NULL)
+        sum += root->right->key;
+    return (root->key == sum && isCSum(root->left) && isCSum(root->right));
+}
+
 int main()
 {
     Node *root = new Node(10);
@@ -198,5 +216,7 @@ int main()
     cout << "Size of a binary tree : " << getSizeRecursive(root) << endl;
     int maxBT = maxOfBinaryTree(root);
     cout << "Max of binary tree : " << maxBT;
+    bool isCSumRes = isCSum(root);
+    cout << "Children Sum Property: " << isCSumRes;
     return 0;
 }
