@@ -188,6 +188,53 @@ bool isCSum(Node *root)
     return (root->key == sum && isCSum(root->left) && isCSum(root->right));
 }
 
+/// @brief check if a tree is balanced or not
+/// tree is balanced if for every node the diff bw heights of left and right subtree is not greater than 1.
+/// @param root root node of tree
+/// @return -1 for not balanced, otherwise returns height
+int checkForBalancedTree(Node *root)
+{
+    if (root == NULL)
+        return 0;
+    int lh = checkForBalancedTree(root->left);
+    if (lh == -1)
+        return -1;
+    int rh = checkForBalancedTree(root->right);
+    if (rh == -1)
+        return -1;
+    if (abs(lh - rh) > 1) // if diff bw left and right heights is greater than 1, return -1
+        return -1;
+    else
+        max(lh, rh) + 1; // calculate height of subtree
+}
+
+/// @brief find max width of binary tree
+/// @param root root node of tree
+/// @return max width
+int maxWidthOfBinaryTree(Node *root)
+{
+    if (root == NULL)
+        return 0;
+    queue<Node *> q;
+    q.push(root);
+    int maxWidth = INT_MIN;
+    while (!q.empty())
+    {
+        int sz = q.size();
+        maxWidth = max(maxWidth, sz);
+        for (int i = 0; i < sz; i++)
+        {
+            Node *curr = q.front();
+            q.pop();
+            if (curr->left != NULL)
+                q.push(curr->left);
+            if (curr->right != NULL)
+                q.push(curr->right);
+        }
+    }
+    return maxWidth;
+}
+
 int main()
 {
     Node *root = new Node(10);
@@ -215,8 +262,11 @@ int main()
     levelOrderLineByLine(root);
     cout << "Size of a binary tree : " << getSizeRecursive(root) << endl;
     int maxBT = maxOfBinaryTree(root);
-    cout << "Max of binary tree : " << maxBT;
+    cout << "Max of binary tree : " << maxBT << endl;
     bool isCSumRes = isCSum(root);
     cout << "Children Sum Property: " << isCSumRes;
+    bool isBal = checkForBalancedTree(root);
+    cout << "is tree balanced: " << isBal;
+    cout << "max width of binary tree: " << maxWidthOfBinaryTree(root) << endl;
     return 0;
 }
