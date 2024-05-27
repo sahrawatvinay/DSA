@@ -177,9 +177,9 @@ int maxOfBinaryTree(Node *root)
 /// @return boolean if it is children sum or not
 bool isCSum(Node *root)
 {
-    if (root == NULL)
+    if (root == NULL) // handling edge case, when no nodes are there
         return true;
-    if (root->left == NULL && root->right == NULL)
+    if (root->left == NULL && root->right == NULL) // when only 1 node is available
         return true;
     int sum = 0;
     if (root->left != NULL)
@@ -274,6 +274,18 @@ void printSpiral(Node *root)
     }
 }
 
+// calculate the diameter of the tree
+int res = 0;
+int heightDiam(Node *root)
+{
+    if (root == NULL)
+        return 0;
+    int lh = heightDiam(root->left);
+    int rh = heightDiam(root->right);
+    res = max(res, 1 + lh + rh); // sets the diameter at every node that we have encountewred so far
+    return 1 + max(lh, rh);
+}
+
 int main()
 {
     Node *root = new Node(10);
@@ -305,7 +317,7 @@ int main()
     bool isCSumRes = isCSum(root);
     cout << "Children Sum Property: " << isCSumRes;
     bool isBal = checkForBalancedTree(root);
-    cout << "is tree balanced: " << isBal;
+    cout << "is tree balanced: " << isBal << endl;
     cout << "max width of binary tree: " << maxWidthOfBinaryTree(root) << endl;
 
     // spiral form
@@ -317,5 +329,16 @@ int main()
     rootspiral->right->left = new Node(6);
     rootspiral->right->right = new Node(7);
     printSpiral(rootspiral);
+
+    Node *rootDiam = new Node(10);
+    rootDiam->left = new Node(20);
+    rootDiam->right = new Node(30);
+    rootDiam->right->left = new Node(40);
+    rootDiam->right->right = new Node(60);
+    rootDiam->right->left->left = new Node(50);
+    rootDiam->right->right->right = new Node(70);
+    heightDiam(rootDiam);
+    cout << "diameter of a tree: " << res << endl;
+
     return 0;
 }
