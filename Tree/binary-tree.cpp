@@ -282,8 +282,31 @@ int heightDiam(Node *root)
         return 0;
     int lh = heightDiam(root->left);
     int rh = heightDiam(root->right);
-    res = max(res, 1 + lh + rh); // sets the diameter at every node that we have encountewred so far
+    // sets the diameter at every node that we have encountewred so far
+    res = max(res, 1 + lh + rh);
+    // Return the height of the current node, which is 1 (for the current node) plus
+    // the maximum of the heights of its left and right subtrees
     return 1 + max(lh, rh);
+}
+
+Node *getLca(Node *root, int n1, int n2)
+{
+    if (root == NULL)
+        return NULL;
+    // case when current node is same as either of n1 or n2
+    if (root->key == n1 || root->key == n2)
+        return root;
+    Node *lca1 = getLca(root->left, n1, n2);  // check for n1/n2 in left subtree of current node
+    Node *lca2 = getLca(root->right, n1, n2); // check for n1/n2 in right subtree of current node
+    // case when n1/n2 is found in left and the other in right subtree
+    if (lca1 != NULL && lca2 != NULL)
+        return root;
+    // we come here only when both keys are present in left or right child or not present at all
+    // case when left side containes both
+    if (lca1 != NULL)
+        return lca1;
+    else //either lca2 is also null or lca2 contains both the keys
+        return lca2;
 }
 
 int main()
@@ -339,6 +362,8 @@ int main()
     rootDiam->right->right->right = new Node(70);
     heightDiam(rootDiam);
     cout << "diameter of a tree: " << res << endl;
+
+    Node *lc = getLca(root, 40, 30);
 
     return 0;
 }
