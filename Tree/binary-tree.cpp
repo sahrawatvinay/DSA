@@ -2,6 +2,7 @@
 #include <queue>
 #include <climits>
 #include <stack>
+#include <math.h>
 using namespace std;
 /// @brief structure of node of a tree
 /// BINARY TREE important points:
@@ -305,8 +306,29 @@ Node *getLca(Node *root, int n1, int n2)
     // case when left side containes both
     if (lca1 != NULL)
         return lca1;
-    else //either lca2 is also null or lca2 contains both the keys
+    else // either lca2 is also null or lca2 contains both the keys
         return lca2;
+}
+
+int countNodeCompleteBinaryTree(Node *root)
+{
+    int lh = 0;
+    int rh = 0;
+    Node *curr = root;
+    while (curr != NULL)
+    {
+        lh++;
+        curr = curr->left;
+    }
+    curr = root;
+    while (curr != NULL)
+    {
+        rh++;
+        curr = curr->right;
+    }
+    if (lh == rh)
+        return (pow(2, lh) - 1);
+    return (1 + countNodeCompleteBinaryTree(root->left) + countNodeCompleteBinaryTree(root->right));
 }
 
 int main()
@@ -365,5 +387,12 @@ int main()
 
     Node *lc = getLca(root, 40, 30);
 
+    Node *rootCBT = new Node(10);
+    rootCBT->left = new Node(20);
+    rootCBT->right = new Node(30);
+    rootCBT->right->left = new Node(40);
+    rootCBT->right->right = new Node(50);
+    int resCBTSize = countNodeCompleteBinaryTree(rootCBT);
+    cout << "Size : " << resCBTSize << endl;
     return 0;
 }
