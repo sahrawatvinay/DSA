@@ -331,6 +331,21 @@ int countNodeCompleteBinaryTree(Node *root)
     return (1 + countNodeCompleteBinaryTree(root->left) + countNodeCompleteBinaryTree(root->right));
 }
 
+/// @brief use preorder to serailize binary tree
+/// @param root root of binary tree
+/// @param arr array containing serialized contents
+void serializeTree(Node *root, vector<int> &arr)
+{
+    if (root == NULL)
+    {
+        arr.push_back(-1); // used to represent null
+        return;
+    }
+    arr.push_back(root->key);
+    serializeTree(root->left, arr);
+    serializeTree(root->right, arr);
+}
+
 int main()
 {
     Node *root = new Node(10);
@@ -394,5 +409,11 @@ int main()
     rootCBT->right->right = new Node(50);
     int resCBTSize = countNodeCompleteBinaryTree(rootCBT);
     cout << "Size : " << resCBTSize << endl;
+    vector<int> serialized;
+    serializeTree(rootCBT, serialized);
+    for (int x : serialized)
+    {
+        cout << x << " ";
+    }
     return 0;
 }
