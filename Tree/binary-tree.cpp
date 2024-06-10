@@ -36,6 +36,29 @@ void inorder(Node *root) // L Root Right
     }
 }
 
+/// @brief iterative inorder traversal
+/// use stack so that we can have track of previously visited node
+/// keep going to the left side first, keep pushing to stack
+/// pop it out and print it, now go to it's right side
+/// @param root root of tree
+void iterativeInorder(Node *root)
+{
+    stack<Node *> st;
+    Node *curr = root;
+    while (curr != NULL || !st.empty())
+    {
+        while (curr != NULL) // keep pushing leftmost nodes in stack
+        {
+            st.push(curr);
+            curr = curr->left;
+        }
+        curr = st.top();
+        st.pop();
+        cout << curr->key << " ";
+        curr = curr->right; // go to the right side of the node
+    }
+}
+
 /// @brief prining nodes of tree in preorder fashion
 /// Root Left Right
 /// Left, Right are subtrees
@@ -49,6 +72,27 @@ void preorder(Node *root) // Root L Right
         cout << root->key << " ";
         preorder(root->left);
         preorder(root->right);
+    }
+}
+
+/// @brief Use stack
+/// keep printing the root node
+/// @param root
+void preorderIterative(Node *root)
+{
+    if (root == NULL)
+        return;
+    stack<Node *> st;
+    st.push(root);
+    while (!st.empty())
+    {
+        Node *curr = st.top();
+        st.pop();
+        cout << curr->key << " ";
+        if (curr->right != NULL)
+            st.push(curr->right);
+        if (curr->left != NULL)
+            st.push(curr->left);
     }
 }
 
@@ -283,7 +327,7 @@ int heightDiam(Node *root)
         return 0;
     int lh = heightDiam(root->left);
     int rh = heightDiam(root->right);
-    // sets the diameter at every node that we have encountewred so far
+    // sets the diameter at every node that we have encountered so far
     res = max(res, 1 + lh + rh);
     // Return the height of the current node, which is 1 (for the current node) plus
     // the maximum of the heights of its left and right subtrees
@@ -415,5 +459,9 @@ int main()
     {
         cout << x << " ";
     }
+    cout << endl;
+    iterativeInorder(root);
+    cout << endl;
+    preorderIterative(root);
     return 0;
 }
