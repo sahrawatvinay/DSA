@@ -48,6 +48,104 @@ Node *insertInBST(Node *root, int val)
     return root;
 }
 
+/// @brief gets the closest greater value only if right side is non empty
+/// @param curr current node which we were able to find in tree and need to delete
+/// @return updated root node of tree
+Node *getSuccessor(Node *curr)
+{
+    curr = curr->right;
+    while (curr != NULL && curr->left != NULL)
+        curr = curr->left;
+    return curr;
+}
+
+/// @brief delete a node in BST
+/// @param root root of BST
+/// @param val value to be deleted
+/// @return root after deletion
+Node *deleteNode(Node *root, int val)
+{
+    // search for the value to be deleted
+    if (root == NULL)
+        return root;
+    if (root->key > val)
+        root->left = deleteNode(root->left, val);
+    else if (root->key < val)
+        root->right = deleteNode(root->right, val);
+    else // when we find the value, we handle 3 cases
+    {
+        if (root->left == NULL) // when leaf node is to be deleted, has node only on right
+        {
+            Node *temp = root->right;
+            delete root;
+            return temp;
+        }
+        else if (root->right == NULL) // when leaf node is to be deleted, has node only on left
+        {
+            Node *temp = root->left;
+            delete root;
+            return temp;
+        }
+        else
+        {
+            Node *succ = getSuccessor(root); // gets the closest greater successor which is leftmost leaf of right child
+            root->key = succ->key;
+            root->right = deleteNode(root->right, succ->key); // now recursively delete the successor from treee, which falls into leaf node case to be handled
+        }
+    }
+    return root;
+}
+
+/// @brief need to find a vlue that is smaller or equal to the provided value
+/// O(h) TC, O(1) Aux space
+/// @param root root of BST
+/// @param val value for which we need to find floor
+/// @return node which is
+Node *floor(Node *root, int val)
+{
+    if (root == NULL)
+        return NULL;
+    Node *res = NULL;
+    while (root != NULL)
+    {
+        if (root->key == val)
+            return root;
+        else if (root->key > val) // we are sure that the value wont be avaialble on the right as all the other nodes are going to be greater than the root
+            root = root->left;
+        else // before going to explore more on left side, update the result value
+        {
+            res = root;
+            root = root->left;
+        }
+    }
+    return res;
+}
+
+/// @brief finding value greater or equal to the provided value
+/// O(h) TC, O(1) Aux space
+/// @param root root of BST
+/// @param val value for which we need ceil
+/// @return node
+Node *ceil(Node *root, int val)
+{
+    if (root == NULL)
+        return NULL;
+    Node *res = NULL;
+    while (root != NULL)
+    {
+        if (root->key == val)
+            return root;
+        else if (root->key < val)
+            root = root->right;
+        else
+        {
+            res = root;
+            root = root->left;
+        }
+    }
+    return res;
+}
+
 int main()
 {
     Node *root = new Node(15);
@@ -64,5 +162,8 @@ int main()
     isPresent = search(root, x);
     cout << x << " present : " << isPresent << endl;
     root = insertInBST(root, 45);
+    Node *resFl = floor(root, 25);
+    Node *resCe = ceil(root, 25);
+    cout << "Floor 25 : " << resFl->key << " Ceil 25 : " << resCe->key;
     return 0;
 }
