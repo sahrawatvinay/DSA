@@ -115,7 +115,7 @@ Node *floor(Node *root, int val)
         else // before going to explore more on left side, update the result value
         {
             res = root;
-            root = root->left;
+            root = root->right;
         }
     }
     return res;
